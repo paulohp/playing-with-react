@@ -59,13 +59,43 @@
 
       var EpisodeTable = React.createClass({
         render: function(){
+          var rows = episodes.map(function(episode){
+            return <EpisodeRow key={episode.title} episode="episode" />;
+          });
           return(
-            
+            <div class="row spacer">
+              <div class="col-lg-4 col-lg-offset-4">
+                <table width="100%">
+                  <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Link</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           );
         }
-      })
+      });
 
-      React.renderComponent(<EpisodeRow />, document.getElementById('container'))
+      var episodes = [{
+            title : "Angular with Yeoman",
+        },{
+            title : "Using D3 with Rickshaw and Angular",
+        },{
+            title : "Canvas with paper.js",
+        },{
+            title : "Express.js middleware",
+        },{
+            title : "MEAN stack - episode 1",
+        }
+      ];
+
+      React.renderComponent(<EpisodeTable episodes={episodes} />, document.getElementById('container'))
     </script>
 </body>
 </html>
